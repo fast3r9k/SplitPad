@@ -12,11 +12,12 @@ final class KeycapView: UIControl {
         var isSpecial: Bool
         var commitsOnRelease: Bool
         var usesLongPressAction: Bool
+        var usesCursorTracking: Bool
 
         init(title: String, secondary: String? = nil, alternates: [String] = [],
              symbol: String? = nil, trailingText: String? = nil,
              isSpecial: Bool = false, commitsOnRelease: Bool = true,
-             usesLongPressAction: Bool = false) {
+             usesLongPressAction: Bool = false, usesCursorTracking: Bool = false) {
             self.title = title
             self.secondary = secondary
             self.alternates = alternates
@@ -25,6 +26,7 @@ final class KeycapView: UIControl {
             self.isSpecial = isSpecial
             self.commitsOnRelease = commitsOnRelease
             self.usesLongPressAction = usesLongPressAction
+            self.usesCursorTracking = usesCursorTracking
         }
     }
 
@@ -35,6 +37,12 @@ final class KeycapView: UIControl {
     var onPressBegan: (() -> Void)?
     var onPressEnded: (() -> Void)?
     var onLongPress: (() -> Void)?
+    var onCursorTrackingBegan: (() -> Bool)?
+    var onCursorMoved: ((Int) -> Void)?
+    var onCursorTrackingEnded: (() -> Void)?
+    var onAccessibleCursorMove: ((Int) -> Void)?
+    private var cursorTracking = false
+    private var cursorDrag = KeyboardCursorDrag()
     private(set) var isInteracting = false
     /// Available while tracking, for UIInputViewController.handleInputModeList(from:with:).
     private(set) var trackingEvent: UIEvent?
@@ -158,7 +166,7 @@ final class KeycapView: UIControl {
         // Deletion can insert/remove on touch-down and own its repeat timer externally.
         onPressBegan?()
         guard isInteracting else { return false }
-        if configuration.usesLongPressAction || !configuration.alternates.isEmpty {
+        if configuration.usesCursorTracking || configuration.usesLongPressAction || !configuration.alternates.isEmpty {
             let timer = Timer(timeInterval: 0.4, repeats: false) { [weak self] _ in
                 self?.holdTriggered()
             }
@@ -172,6 +180,11 @@ final class KeycapView: UIControl {
         guard isInteracting else { return false }
         lastTouchPoint = touch.location(in: self)
         trackingEvent = event
+        if cursorTracking {
+            let offset = cursorDrag.move(to: Double(lastTouchPoint.x))
+            if offset != 0 { onCursorMoved?(offset) }
+            return isInteracting
+        }
         // A repeating action (such as delete) stops permanently for this touch
         // when the finger leaves the key; re-entry must not restart deletion.
         if !configuration.commitsOnRelease,
@@ -209,6 +222,11 @@ final class KeycapView: UIControl {
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         guard isInteracting else { return }
         let point = touch?.location(in: self) ?? lastTouchPoint
+        if cursorTracking {
+            let offset = cursorDrag.move(to: Double(point.x))
+            if offset != 0 { onCursorMoved?(offset) }
+            guard isInteracting else { return }
+        }
         var commitDefault = false
         var chosen: String?
         if let popup {
@@ -261,6 +279,13 @@ final class KeycapView: UIControl {
         if accessibilityLabel == nil || accessibilityLabel == generatedAccessibilityLabel {
             accessibilityLabel = configuration.title
         }
+        if cursorTracking {
+            mainLabel.isHidden = true
+            secondaryLabel.isHidden = true
+            trailingLabel.isHidden = true
+            symbolView.image = UIImage(systemName: "arrow.left.and.right")
+            symbolView.isHidden = false
+        }
         generatedAccessibilityLabel = configuration.title
         accessibilityHint = configuration.secondary == nil ? nil : "Удерживайте или смахните вниз для дополнительного символа"
         var actions: [UIAccessibilityCustomAction] = []
@@ -274,6 +299,17 @@ final class KeycapView: UIControl {
                 self.onCommit?(value)
                 return true
             })
+        }
+        if configuration.usesCursorTracking {
+            accessibilityHint = "Hold, then slide left or right to move the cursor"
+            for (name, offset) in [("Move cursor left", -1), ("Move cursor right", 1)] {
+                actions.append(UIAccessibilityCustomAction(name: name) { [weak self] _ in
+                    guard let self, self.isEnabled else { return false }
+                    self.cancelInteraction()
+                    self.onAccessibleCursorMove?(offset)
+                    return true
+                })
+            }
         }
         if configuration.usesLongPressAction {
             actions.append(UIAccessibilityCustomAction(name: "Удержание") { [weak self] _ in
@@ -306,6 +342,16 @@ final class KeycapView: UIControl {
     private func holdTriggered() {
         holdTimer = nil
         guard isInteracting, !flickedSecondary, isHighlighted else { return }
+        if configuration.usesCursorTracking {
+            // Suppress a space on release even when the host refuses cursor mode.
+            performedLongPress = true
+            cursorTracking = onCursorTrackingBegan?() == true
+            if cursorTracking {
+                cursorDrag.begin(at: Double(lastTouchPoint.x))
+                applyConfiguration()
+            }
+            return
+        }
         if configuration.usesLongPressAction {
             performedLongPress = true
             onLongPress?()
@@ -375,6 +421,9 @@ final class KeycapView: UIControl {
 
     private func finishInteraction() {
         let wasInteracting = isInteracting
+        let wasCursorTracking = cursorTracking
+        cursorTracking = false
+        cursorDrag.end()
         isInteracting = false
         trackingEvent = nil
         invalidateHoldTimer()
@@ -389,6 +438,7 @@ final class KeycapView: UIControl {
             self.pendingConfiguration = nil
         }
         applyConfiguration()
+        if wasCursorTracking { onCursorTrackingEnded?() }
         if wasInteracting { onPressEnded?() }
     }
 }

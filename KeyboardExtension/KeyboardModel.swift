@@ -319,3 +319,36 @@ struct KeyboardTypingEngine {
         return text
     }
 }
+
+/// Converts trackpad motion into bounded character steps, independent of UIKit.
+struct KeyboardCursorDrag {
+    private var lastPosition: Double?
+    private var remainder: Double = 0
+    private let pointsPerCharacter: Double = 8
+    private let maximumSteps = 12
+
+    mutating func begin(at position: Double) {
+        lastPosition = position.isFinite ? position : nil
+        remainder = 0
+    }
+
+    mutating func end() {
+        lastPosition = nil
+        remainder = 0
+    }
+
+    mutating func move(to position: Double) -> Int {
+        guard position.isFinite else { end(); return 0 }
+        guard let previous = lastPosition else { return 0 }
+        lastPosition = position
+        let delta = position - previous
+        guard delta.isFinite else { remainder = 0; return 0 }
+        // Discard an unfinished step when reversing, so reversal feels immediate.
+        if delta != 0 && remainder != 0 && delta.sign != remainder.sign { remainder = 0 }
+        let bound = pointsPerCharacter * Double(maximumSteps)
+        remainder += min(bound, max(-bound, delta))
+        let steps = max(-maximumSteps, min(maximumSteps, Int(remainder / pointsPerCharacter)))
+        remainder -= Double(steps) * pointsPerCharacter
+        return steps
+    }
+}

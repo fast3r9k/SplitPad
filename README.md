@@ -1,6 +1,6 @@
 # SplitPad
 
-SplitPad 0.6.1 is an iPad keyboard with English and Russian layouts, split and joined modes, four rows of keys, alternate characters, word suggestions, emoji, and size controls accessible directly from the keyboard.
+SplitPad 0.7.0 is an iPad keyboard with English and Russian layouts, split and joined modes, four rows of keys, alternate characters, word suggestions, emoji, and size controls accessible directly from the keyboard.
 
 It is a custom keyboard extension that iPadOS loads in place of the system keyboard. It does not modify Apple's keyboard.
 
@@ -22,6 +22,7 @@ With a free Personal Team, the provisioning profile expires after seven days. Re
 
 ## Usage
 
+- Hold either space bar for about 0.4 seconds, then slide left or right to move the text cursor. Release to return to typing. Holding does not insert a space; ordinary taps and double-space punctuation still work. This also works in joined mode and on the symbols page. Cursor dragging is disabled during emoji search.
 - Tap the rectangle button next to the right space bar to join or split the keyboard. In joined mode, this button sits to the right of the single space bar.
 - Hold that button to open settings for the width of each half, key height, and key clicks. Settings are saved locally. There is no separate gear button; colors automatically follow the system theme and the text field's appearance.
 - The `.?123` keys on both sides open numbers and symbols. Joined mode has one such key.
@@ -45,6 +46,7 @@ With a free Personal Team, the provisioning profile expires after seven days. Re
 
 ## Limitations
 
+- Space-bar cursor dragging moves forward or backward through text. Vertical line navigation and text-selection gestures are not implemented.
 - There is no automatic correction or continuous swipe typing. Built-in dictation is not available; switch to the system keyboard using the globe for voice input. Spelling and word completion use local UIKit dictionaries. When a dictionary marks a word as misspelled, close matches from a small common-word list receive priority. The availability and quality of corrections depend on the dictionary for the selected language. Next-word suggestions use a small set of rules; they are not Apple's predictive text system or a learning model. The host app, not the keyboard extension, controls spelling underlines in the text field.
 - Suggestions are not offered in numeric, email, or URL fields, when text is selected, or when the cursor is inside a word. Word completion respects the field's autocorrection setting; corrections respect its spell-checking setting. Addresses, mixed-script words, and words containing digits are not corrected. Text is neither sent over the network nor saved for learning.
 - iPadOS switches to the system keyboard in password fields and some phone-number fields. Apps can also disallow third-party keyboards entirely.
@@ -98,6 +100,8 @@ xcrun swiftc -parse-as-library -module-cache-path .build/ModelModuleCache Keyboa
 
 ## Device testing
 
+- Hold each space bar, drag left and right, and type at the new position. Check reversing direction, crossing the original key boundary, a stationary hold, rotation/cancellation, joined mode, symbols, and ordinary/double-space taps. Emoji search must never move the host text cursor.
+
 1. In an empty field, type `Привет`, quickly press Space twice, and continue typing. Expect `Привет. ` followed by a capitalized letter.
 2. Double-tap Shift, type several letters, and disable Caps Lock. Check the line beneath the arrow in the Caps Lock icon.
 3. Tap 🌐 to switch languages; hold 🌐 to switch to the next system keyboard. Check that Tab inserts a tab character.
@@ -116,6 +120,8 @@ When testing through Device Hub, disable **Device → Keyboard → Simulate Hard
 Apple documentation: [Creating a custom keyboard](https://developer.apple.com/documentation/uikit/creating-a-custom-keyboard).
 
 ## Verification status
+
+**Version 0.7.0 (build 14)** adds hold-and-drag cursor movement to both space bars and the joined layout. The signed iOS build passed and was installed on the iPad; the user confirmed comfortable horizontal cursor movement on the device. All 170 input-model checks passed, including 18 new cursor-drag checks. Gesture behavior in every third-party app and all layout combinations still requires broader manual testing.
 
 **Version 0.6.1 (build 13)** renames the app, keyboard, Xcode project, and shared scheme to SplitPad. Existing bundle identifiers and saved preferences remain compatible. The unsigned iOS build, all 101 emoji catalog/history checks, and the Unicode/CLDR catalog reproducibility check passed. The repository excludes local Xcode user settings and build outputs; signing requires selecting your own team.
 

@@ -12,6 +12,7 @@ private struct KeyboardModelTests {
         doubleSpace()
         acceleratedDeletion()
         layouts()
+        cursorDragging()
         print("PASS: \(checks) keyboard model checks")
     }
 
@@ -30,6 +31,39 @@ private struct KeyboardModelTests {
         var text = source
         for _ in 0..<edit.deleteBackwardCount where !text.isEmpty { text.removeLast() }
         return text + edit.text
+    }
+
+
+    private static func cursorDragging() {
+        var drag = KeyboardCursorDrag()
+        expect(drag.move(to: 50) == 0, "Dragging is inert before activation")
+        drag.begin(at: 100)
+        expect(drag.move(to: 103) == 0, "Small motion is accumulated")
+        expect(drag.move(to: 108) == 1, "One character per eight points")
+        expect(drag.move(to: 132) == 3, "Larger movement advances multiple characters")
+        expect(drag.move(to: 132) == 0, "Stationary hold does not repeat")
+        expect(drag.move(to: 136) == 0, "Partial forward step retained")
+        expect(drag.move(to: 128) == -1, "Reversal discards unfinished forward step")
+        expect(drag.move(to: 28) == -12, "Large jumps are bounded")
+        expect(drag.move(to: 28) == 0, "No backlog after bounded jump")
+        expect(drag.move(to: 36) == 1, "Reversal after jump remains responsive")
+        drag.end()
+        expect(drag.move(to: 1000) == 0, "Ending prevents further cursor movement")
+        drag.begin(at: -10)
+        expect(drag.move(to: -18) == -1, "New activation resets anchor")
+        expect(drag.move(to: .nan) == 0, "Invalid coordinates cannot move cursor")
+        expect(drag.move(to: 0) == 0, "Invalid coordinate ends the drag")
+        drag.begin(at: .infinity)
+        expect(drag.move(to: 5) == 0, "Invalid starting coordinate does not activate")
+        drag.begin(at: 0)
+        expect(drag.move(to: 10000) == 12, "Positive jumps bounded")
+        expect(drag.move(to: 10008) == 1, "Clipped motion is not queued")
+        var engine = KeyboardTypingEngine()
+        sync(&engine, "word")
+        _ = engine.space(contextBefore: "word", selectedText: nil, at: 1)
+        engine.interruptSequence()
+        let afterDrag = engine.space(contextBefore: "word ", selectedText: nil, at: 1.2)
+        expect(afterDrag == KeyboardEdit(text: " "), "Cursor mode breaks double-space sequence")
     }
 
     private static func capitalization() {

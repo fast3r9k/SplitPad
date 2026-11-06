@@ -64,6 +64,9 @@ final class KeyboardViewController: UIInputViewController {
     private var lastSize = CGSize.zero
     private var documentID: UUID?
     private var applyingEdit = false
+    private weak var cursorKey: KeycapView?
+    private var cursorDocumentID: UUID?
+    private var spaceTouchDocuments: [ObjectIdentifier: UUID] = [:]
     private var deleteTimer: Timer?
     private var deletionStarted: TimeInterval = 0
     private var lastRepeatedDeletion: TimeInterval = 0
@@ -299,14 +302,21 @@ final class KeyboardViewController: UIInputViewController {
         let key = KeycapView(configuration: configuration(for: definition))
         key.popupHost = view
         key.accessibilityIdentifier = "key." + definition.id
-        key.onPressBegan = { [weak self] in
-            guard let self else { return }
+        key.onPressBegan = { [weak self, weak key] in
+            guard let self, let key else { return }
+            guard self.cursorKey == nil else { return }
+            if case .space = definition.action {
+                self.spaceTouchDocuments[ObjectIdentifier(key)] = self.currentDocumentIdentifier
+            }
             self.emojiPanel.cancelInteractions()
             self.playClick()
             if case .delete = definition.action { self.beginDeleting() }
         }
-        key.onPressEnded = { [weak self] in
+        key.onPressEnded = { [weak self, weak key] in
             if case .delete = definition.action { self?.stopDeleting() }
+            if case .space = definition.action, let key {
+                self?.spaceTouchDocuments.removeValue(forKey: ObjectIdentifier(key))
+            }
         }
         key.onCommit = { [weak self] alternate in
             guard let self else { return }
@@ -320,6 +330,22 @@ final class KeyboardViewController: UIInputViewController {
             case .globe: self.advanceToNextInputMode()
             case .toggleSplit: self.showSettings()
             default: break
+            }
+        }
+        if case .space = definition.action {
+            key.onCursorTrackingBegan = { [weak self, weak key] in
+                guard let self, let key else { return false }
+                return self.beginCursorTracking(on: key)
+            }
+            key.onCursorMoved = { [weak self] offset in self?.moveCursor(by: offset) }
+            key.onCursorTrackingEnded = { [weak self] in self?.endCursorTracking() }
+            key.onAccessibleCursorMove = { [weak self] offset in
+                guard let self, self.cursorKey == nil, !self.isSearchingEmoji,
+                      self.currentDocumentIdentifier != nil else { return }
+                self.engine.interruptSequence()
+                self.textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
+                self.synchronize()
+                self.refreshKeys()
             }
         }
         canvas.addSubview(key)
@@ -360,7 +386,8 @@ final class KeyboardViewController: UIInputViewController {
         return KeycapView.Configuration(title: title, secondary: key.secondary.map { activeEngine.cased($0) },
                                        alternates: key.holdAlternates.map { activeEngine.cased($0) },
                                        symbol: symbol, trailingText: trailing, isSpecial: isSpecial,
-                                       commitsOnRelease: commitsOnRelease, usesLongPressAction: usesLongPressAction)
+                                       commitsOnRelease: commitsOnRelease, usesLongPressAction: usesLongPressAction,
+                                       usesCursorTracking: key.action == .space && !isSearchingEmoji)
     }
 
     private func refreshKeys() {
@@ -390,6 +417,7 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func perform(_ action: KeyboardAction) {
+        guard cursorKey == nil else { return }
         switch action {
         case .text(let value): insert(value)
         case .space:
@@ -443,6 +471,7 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func insert(_ text: String, applyShift: Bool = true) {
+        guard cursorKey == nil else { return }
         if isSearchingEmoji {
             let edit = searchEngine.insertText(text, contextBefore: emojiPanel.searchQuery,
                                                selectedText: nil, at: ProcessInfo.processInfo.systemUptime,
@@ -517,6 +546,50 @@ final class KeyboardViewController: UIInputViewController {
         refreshKeys()
     }
 
+    private var currentDocumentIdentifier: UUID? {
+        guard view.window != nil else { return nil }
+        return textDocumentProxy.perform(#selector(getter: UITextDocumentProxy.documentIdentifier))?
+            .takeUnretainedValue() as? UUID
+    }
+
+    private func beginCursorTracking(on key: KeycapView) -> Bool {
+        guard cursorKey == nil, !isSearchingEmoji, !showingSettings, !showingEmojis,
+              let identifier = currentDocumentIdentifier,
+              spaceTouchDocuments[ObjectIdentifier(key)] == identifier else { return false }
+        cursorKey = key
+        cursorDocumentID = identifier
+        engine.interruptSequence()
+        stopDeleting()
+        pressedSuggestions.removeAll()
+        suggestionBar.isUserInteractionEnabled = false
+        for other in allKeys where other.view !== key { other.view.isEnabled = false }
+        return true
+    }
+
+    private func moveCursor(by offset: Int) {
+        guard let key = cursorKey else { return }
+        guard !isSearchingEmoji, !showingSettings, !showingEmojis,
+              let identifier = currentDocumentIdentifier, identifier == cursorDocumentID else {
+            key.cancelInteraction()
+            return
+        }
+        engine.interruptSequence()
+        applyingEdit = true
+        textDocumentProxy.adjustTextPosition(byCharacterOffset: offset)
+        applyingEdit = false
+        synchronize()
+        refreshKeys()
+    }
+
+    private func endCursorTracking() {
+        cursorKey = nil
+        cursorDocumentID = nil
+        engine.interruptSequence()
+        for key in allKeys { key.view.isEnabled = true }
+        suggestionBar.isUserInteractionEnabled = true
+        refreshKeys()
+    }
+
     private func stopDeleting() { deleteTimer?.invalidate(); deleteTimer = nil }
     private func cancelInteractions() {
         stopDeleting()
@@ -585,6 +658,7 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     private func acceptSuggestion(_ candidate: KeyboardSuggestion) {
+        guard cursorKey == nil else { return }
         guard let context = suggestionContext, let edit = candidate.edit(ifCurrent: context) else {
             refreshSuggestions()
             return
