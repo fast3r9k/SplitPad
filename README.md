@@ -1,142 +1,144 @@
-# ThumbSplit
+# SplitPad
 
-ThumbSplit 0.6 — клавиатура для iPad с русской и английской раскладками, разделённым и цельным режимами. Четыре ряда клавиш, дополнительные символы, подсказки слов, эмодзи и настройка размеров прямо на клавиатуре.
+SplitPad 0.6.1 is an iPad keyboard with English and Russian layouts, split and joined modes, four rows of keys, alternate characters, word suggestions, emoji, and size controls accessible directly from the keyboard.
 
-Это собственная клавиатура, которую iPadOS подключает вместо системной. Она не изменяет клавиатуру Apple.
+It is a custom keyboard extension that iPadOS loads in place of the system keyboard. It does not modify Apple's keyboard.
 
-## Установка на свой iPad
+## Install on your iPad
 
-1. Откройте `ThumbSplit.xcodeproj` в Xcode.
-2. Если Apple Account ещё не добавлен: Xcode → Settings → Accounts → `+` → Apple Account.
-3. Нажмите синий значок проекта в левой панели. В TARGETS выберите **ThumbSplit** → **Signing & Capabilities**. Включите **Automatically manage signing**, выберите свою **Team**. Для бесплатного аккаунта это **Personal Team**.
-4. Повторите выбор той же Team для target **ThumbSplitKeyboard**.
-5. Если Xcode сообщает, что Bundle Identifier занят, замените `com.nikitagreckin.ThumbSplit` у приложения на уникальный, например `com.yourname.ThumbSplit2026`. У клавиатуры используйте тот же префикс плюс `.Keyboard`: `com.yourname.ThumbSplit2026.Keyboard`.
-6. Подключите iPad к Mac, разблокируйте его и подтвердите доверие компьютеру, если появится запрос.
-7. При запросе Xcode включите **Режим разработчика**: настройки iPad → Конфиденциальность и безопасность → Режим разработчика. Потребуются перезапуск iPad и подтверждение.
-8. В верхней панели Xcode выберите схему **ThumbSplit**, а устройством запуска — свой iPad. Нажмите ▶︎ или **⌘R**.
-9. Если iPad запросит доверие разработчику: Настройки → Основные → VPN и управление устройством → приложение разработчика → Доверять. Этот пункт появляется только когда он нужен системе.
-10. Добавьте клавиатуру: настройки iPad → Основные → Клавиатура → Клавиатуры → Новые клавиатуры → **ThumbSplit**. «Полный доступ» включать не требуется.
-11. Откройте приложение ThumbSplit, коснитесь тестового поля и удерживайте глобус на экранной клавиатуре. Выберите **ThumbSplit**.
+1. Open `SplitPad.xcodeproj` in Xcode.
+2. If you have not added your Apple Account yet, go to **Xcode → Settings → Accounts → + → Apple Account**.
+3. Select the blue project icon in the navigator. Under **TARGETS**, select **SplitPad → Signing & Capabilities**. Enable **Automatically manage signing** and select your **Team**. For a free account, select your **Personal Team**.
+4. Select the same team for the **SplitPadKeyboard** target.
+5. If Xcode reports that the bundle identifier is unavailable, replace `com.nikitagreckin.ThumbSplit` with a unique identifier, such as `com.yourname.SplitPad2026`. Use the same prefix followed by `.Keyboard` for the extension: `com.yourname.SplitPad2026.Keyboard`.
+6. Connect your iPad to your Mac, unlock it, and trust the computer if prompted.
+7. If Xcode asks you to enable **Developer Mode**, open **Settings → Privacy & Security → Developer Mode** on your iPad. You will need to restart the iPad and confirm the change.
+8. In Xcode's toolbar, select the **SplitPad** scheme and your iPad as the run destination. Click ▶︎ or press **⌘R**.
+9. If the iPad asks you to trust the developer, go to **Settings → General → VPN & Device Management → Developer App → Trust**. This option appears only when the system requires it.
+10. Add the keyboard in **Settings → General → Keyboard → Keyboards → Add New Keyboard → SplitPad**. **Allow Full Access** is not required.
+11. Open the SplitPad app, tap the test field, and hold the globe key on the onscreen keyboard. Select **SplitPad**.
 
-С бесплатной Personal Team профиль установки действует 7 дней; после истечения приложение потребуется снова собрать и установить из Xcode. Публикация в App Store для личного тестирования не нужна. Условия Apple: https://developer.apple.com/help/account/basics/about-your-developer-account
+With a free Personal Team, the provisioning profile expires after seven days. Rebuild and reinstall the app from Xcode when it expires. App Store distribution is not required for personal testing. See Apple's [developer account information](https://developer.apple.com/help/account/basics/about-your-developer-account).
 
-## Использование
+## Usage
 
-- Кнопка с прямоугольником рядом с правым пробелом соединяет и разделяет клавиатуру. В цельном режиме она находится справа от общего пробела.
-- Удержание этой кнопки открывает настройки ширины половинок, высоты клавиш и щелчков. Настройки сохраняются локально. Отдельной шестерёнки нет; цвет автоматически следует оформлению системы и поля ввода.
-- Кнопки `.?123` с обеих сторон открывают цифры и символы. В цельном режиме остаётся одна такая кнопка.
-- После пробела на странице цифр и символов клавиатура возвращается к буквам текущего языка. Это работает и при поиске эмодзи.
-- Короткое нажатие 🌐 меняет язык. Долгое нажатие 🌐 переключает на следующую клавиатуру iPadOS. На пробеле справа указан `eng` / `ру`.
-- `Tab` в начале второго ряда вставляет символ табуляции. Его отображение зависит от приложения; эта кнопка не переводит фокус в следующее поле.
-- В начале предложения включается заглавная буква. Учитывается настройка поля ввода: например, поле может запрещать автоматический верхний регистр.
-- Быстрый двойной пробел после слова вставляет `. `. Двойное нажатие Shift включает Caps Lock: стрелка получает нижнюю черту. Одинарный Shift снимает блокировку.
-- Дополнительные символы на буквах оставлены только в верхнем ряду. У букв второго и третьего рядов нет ни значков в углу, ни меню вариантов. У запятой и точки варианты сохранены.
-- Дополнительный символ в правом верхнем углу вводится свайпом вниз или удержанием с отпусканием на месте. У русской «е» в углу снова цифра `5`, а в меню удержания два варианта: `5` и `ё`.
-- Удержание буквы или знака открывает варианты над клавишей, включая верхний ряд: дополнительный символ выбран сразу, для другого варианта сдвиньте палец и отпустите. `ё` находится под `е`; акценты — под английскими буквами верхнего ряда; валюты, кавычки и тире — на странице символов. Фигурные скобки находятся под квадратными.
-- Backspace сразу удаляет один символ, затем повторяет удаление. Через 1,6 секунды удержания переходит к словам. Отпускание или уход пальца с клавиши останавливает повтор.
-- Клавиатура перестраивается при повороте iPad; в узком окне промежуток между половинками уменьшается.
-- Щелчки используют системный механизм и зависят также от настроек звука iPad.
-- Над клавишами показываются до трёх вариантов: исправления орфографии, завершение текущего слова или простые варианты следующего слова. Исправления русского и английского помечены «Исправить» / «Correct» и выполняются только по нажатию. Проверяется слово перед курсором, в том числе сразу после пробела или пунктуации; уже введённые пробелы и знаки сохраняются. Для более ранней ошибки поставьте курсор сразу после слова. Автоматической замены текста нет.
-- Смайлик справа от глобуса открывает каталог Emoji 18 с русскими и английскими названиями CLDR 49. Эмодзи прокручиваются по горизонтали; категории и недавние доступны в нижней полосе. Кнопка `АБВ` / `ABC` возвращает буквы.
-- Коснитесь строки поиска и вводите название или ключевые слова на русском либо английском. Язык меняется глобусом. Поиск идёт только внутри клавиатуры: запрос не вставляется в приложение и не сохраняется. Нажатие результата вставляет эмодзи в исходное поле. «Отмена» или клавиша «Готово» возвращает полный каталог.
-- Удерживайте эмодзи с вариантами, сдвиньте палец к оттенку и отпустите. У пар доступны разные оттенки кожи для каждого человека. Выбранный вариант запоминается для этого эмодзи.
-- В «Недавних» сохраняются последние 40 выбранных эмодзи, включая оттенки, без повторов. История хранится только в локальных настройках расширения.
-- Каталог включает 3 963 полностью определённые последовательности, сгруппированные в 1 923 основных эмодзи. Отдельные модификаторы кожи и волос не показываются как самостоятельные эмодзи. Панель показывает символы, которые установленный шрифт Apple умеет отображать цельным эмодзи; доступность новых символов зависит от версии iPadOS.
+- Tap the rectangle button next to the right space bar to join or split the keyboard. In joined mode, this button sits to the right of the single space bar.
+- Hold that button to open settings for the width of each half, key height, and key clicks. Settings are saved locally. There is no separate gear button; colors automatically follow the system theme and the text field's appearance.
+- The `.?123` keys on both sides open numbers and symbols. Joined mode has one such key.
+- Pressing Space on the numbers and symbols page returns to letters in the current language. This also works while searching for emoji.
+- Tap 🌐 to switch languages. Hold 🌐 to switch to the next iPadOS keyboard. The right edge of each space bar shows `eng` or `ру`.
+- `Tab`, at the start of the second row, inserts a tab character. Its appearance depends on the host app; it does not move focus to the next field.
+- The first letter of a sentence is capitalized automatically, subject to the text field's settings. For example, a field may disable automatic capitalization.
+- Quickly press Space twice after a word to insert a period and a space (`. `). Double-tap Shift to enable Caps Lock, indicated by a line beneath the arrow. Tap Shift once to turn it off.
+- Alternate characters on letter keys are available only in the top row. Letters in the second and third rows have neither corner labels nor alternate-character menus. The comma and period keys retain their alternatives.
+- Enter the character shown in a key's upper-right corner by swiping down, or by holding and releasing without moving. The Russian `е` key shows `5` in its corner and offers two options when held: `5` and `ё`.
+- Hold a letter or symbol key with alternatives to open its menu above the key, including in the top row. The secondary character is selected initially; slide your finger to another option and release to enter it. Find `ё` under `е`, accented characters under English top-row letters, and currencies, quotation marks, and dashes on the symbols page. Curly braces are available under square brackets.
+- Backspace deletes one character immediately, then repeats. After 1.6 seconds of holding, it starts deleting whole words. Releasing or moving your finger off the key stops deletion.
+- The keyboard adapts when you rotate the iPad. In narrow windows, the gap between the two halves becomes smaller.
+- Key clicks use the system sound mechanism and also depend on the iPad's sound settings.
+- Up to three suggestions appear above the keys: spelling corrections, completions for the current word, or simple next-word suggestions. Russian and English corrections are labeled **Исправить** / **Correct** and are applied only when tapped. The word before the cursor is checked, including immediately after a space or punctuation; existing spaces and punctuation are preserved. To correct an earlier word, place the cursor immediately after it. Text is never replaced automatically.
+- Tap the smiley to the right of the globe to open the Emoji 18 catalog, with Russian and English names from CLDR 49. Scroll emoji horizontally; categories and recent emoji are available in the bottom bar. Tap `АБВ` / `ABC` to return to letters.
+- Tap the search bar and enter a name or keywords in Russian or English. Use the globe to switch languages. Search takes place entirely within the keyboard: the query is neither inserted into the host app nor saved. Tap a result to insert the emoji into the original text field. **Отмена** (Cancel) or **Готово** (Done) returns to the full catalog.
+- Hold an emoji that has variants, slide your finger to a skin tone, and release. Couple emoji support separate skin tones for each person. The selected variant is remembered for that emoji.
+- **Recents** keeps the last 40 selected emoji, including skin tones, without duplicates. This history is stored only in the extension's local settings.
+- The catalog contains 3,963 fully qualified sequences grouped into 1,923 base emoji. Skin-tone and hair modifiers are not shown as standalone emoji. The panel displays symbols that the installed Apple font can render as a single emoji; support for newer emoji depends on the iPadOS version.
 
-## Ограничения
+## Limitations
 
-- Нет автоматической коррекции и непрерывного свайп-набора слов. Встроенной диктовки нет; для голосового ввода переключитесь на системную клавиатуру через глобус. Орфография и завершение слов используют локальные словари UIKit. Для слова, которое словарь считает ошибочным, близкие варианты из небольшого списка частых слов получают приоритет. Доступность и качество исправлений зависят от словаря выбранного языка. Подсказки следующего слова используют небольшой набор правил; это не предиктивный ввод Apple и не обучаемая модель. Подчёркиванием ошибок в сообщении управляет приложение, а не расширение клавиатуры.
-- Варианты не предлагаются в числовых полях, полях email/URL, при выделенном тексте или курсоре внутри слова. Завершение слов учитывает отключение автокоррекции; исправления — настройку проверки орфографии поля. Адреса, смешанные алфавиты и слова с цифрами не исправляются. Текст не отправляется в сеть и не сохраняется для обучения.
-- В полях паролей и некоторых полях телефонного номера iPadOS возвращает системную клавиатуру. Приложение может полностью запрещать сторонние клавиатуры.
-- Промежуток между половинами занимает часть общей области клавиатуры. Это не два независимых плавающих окна и не прозрачная область для взаимодействия с приложением.
-- Если приложение скрывает контекст ввода, двойной пробел не заменяет текст, а ускоренное удаление остаётся посимвольным. Начальная заглавная включается согласно настройке поля; если контекст постоянно скрыт, может потребоваться ручной Shift.
-- Клавиатура не отправляет текст в сеть, не сохраняет набранные сообщения и поисковые запросы. Локально сохраняются недавние эмодзи и предпочтения оттенков. «Полный доступ» не нужен.
+- There is no automatic correction or continuous swipe typing. Built-in dictation is not available; switch to the system keyboard using the globe for voice input. Spelling and word completion use local UIKit dictionaries. When a dictionary marks a word as misspelled, close matches from a small common-word list receive priority. The availability and quality of corrections depend on the dictionary for the selected language. Next-word suggestions use a small set of rules; they are not Apple's predictive text system or a learning model. The host app, not the keyboard extension, controls spelling underlines in the text field.
+- Suggestions are not offered in numeric, email, or URL fields, when text is selected, or when the cursor is inside a word. Word completion respects the field's autocorrection setting; corrections respect its spell-checking setting. Addresses, mixed-script words, and words containing digits are not corrected. Text is neither sent over the network nor saved for learning.
+- iPadOS switches to the system keyboard in password fields and some phone-number fields. Apps can also disallow third-party keyboards entirely.
+- The gap between the halves remains part of the keyboard's overall area. The halves are not independent floating windows, and the gap is not a transparent area through which you can interact with the app.
+- If the host app hides the input context, double-space does not replace text, and accelerated deletion remains character by character. Initial capitalization follows the field's settings; if context is consistently unavailable, you may need to use Shift manually.
+- The keyboard does not send text over the network or save typed messages or search queries. Recent emoji and preferred skin tones are stored locally. **Full Access** is not required.
 
-## Для разработки
+## Development
 
-- Минимальная версия: iPadOS 17.0. Проект ориентирован на iPad, Swift 5 language mode, SwiftUI для приложения и UIKit для расширения.
-- `ThumbSplitApp/ThumbSplitApp.swift` — инструкция и поле для проверки.
-- `KeyboardExtension/KeyboardViewController.swift` — размеры, настройки и работа с полем ввода.
-- `KeyboardExtension/KeycapView.swift` — касания, свайпы вниз и меню вариантов.
-- `KeyboardExtension/KeyboardModel.swift` — раскладки и логика редактирования без UIKit.
-- `KeyboardExtension/KeyboardSuggestions.swift` — подбор подсказок, безопасная замена ошибочного слова и проверка контекста перед вставкой.
-- `KeyboardExtension/EmojiPanelView.swift` — категории, поиск, недавние и выбор оттенков.
-- `KeyboardExtension/EmojiCatalog.swift` и `EmojiCatalog.json` — локальный каталог, поиск и история эмодзи.
-- `Scripts/generate_emoji_catalog.py` — воспроизводимое обновление каталога из Unicode/CLDR; источники описаны в `KeyboardExtension/EmojiCatalogSources.md`, лицензия — в `KeyboardExtension/LICENSE-UNICODE.txt`.
-- `Tests/KeyboardModelTests.swift` и `Tests/KeyboardSuggestionsTests.swift` — проверки логики ввода, раскладок и подсказок.
-- `Tests/EmojiCatalogTests.swift` — полнота каталога относительно Unicode, поиск RU/EN, варианты оттенков и сохранение истории.
-- `KeyboardExtension/Info.plist` — регистрация Keyboard Extension без Full Access.
-- `KeyboardExtension/PrivacyInfo.xcprivacy` — декларация локального использования UserDefaults и измерения интервалов нажатий и удержаний.
+The app was previously named ThumbSplit. Its original bundle identifiers and emoji-history storage key are retained so updates preserve existing installations and preferences. Select your own signing team and unique bundle identifiers when building a fork.
 
-Проверка сборки без подписи (из папки проекта):
+- Minimum version: **iPadOS 17.0**. The project targets iPad, uses Swift 5 language mode, SwiftUI for the containing app, and UIKit for the keyboard extension.
+- `SplitPadApp/SplitPadApp.swift` — setup instructions and a test field.
+- `KeyboardExtension/KeyboardViewController.swift` — sizing, settings, and interaction with the text field.
+- `KeyboardExtension/KeycapView.swift` — taps, downward swipes, and alternate-character menus.
+- `KeyboardExtension/KeyboardModel.swift` — layouts and editing logic independent of UIKit.
+- `KeyboardExtension/KeyboardSuggestions.swift` — suggestion selection, safe replacement of misspelled words, and context validation before insertion.
+- `KeyboardExtension/EmojiPanelView.swift` — categories, search, recents, and skin-tone selection.
+- `KeyboardExtension/EmojiCatalog.swift` and `EmojiCatalog.json` — the local emoji catalog, search, and history.
+- `Scripts/generate_emoji_catalog.py` — reproducible catalog updates from Unicode/CLDR. Sources are documented in [EmojiCatalogSources.md](KeyboardExtension/EmojiCatalogSources.md); the data license is in [LICENSE-UNICODE.txt](KeyboardExtension/LICENSE-UNICODE.txt).
+- `Tests/KeyboardModelTests.swift` and `Tests/KeyboardSuggestionsTests.swift` — input logic, layout, and suggestion checks.
+- `Tests/EmojiCatalogTests.swift` — catalog completeness against Unicode, Russian/English search, skin-tone variants, and history persistence.
+- `KeyboardExtension/Info.plist` — keyboard extension registration without Full Access.
+- `KeyboardExtension/PrivacyInfo.xcprivacy` — declarations for local UserDefaults usage and measuring tap and hold intervals.
 
-```sh
-xcodebuild -project ThumbSplit.xcodeproj -scheme ThumbSplit -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath ../../work/DerivedData CODE_SIGNING_ALLOWED=NO build
-```
-
-Неподписанную сборку нельзя установить на iPad напрямую: для установки используйте Xcode со своей Team.
-
-Проверка модели (из папки проекта):
+Check the build without signing, from the project directory:
 
 ```sh
-mkdir -p ../../work/ModelModuleCache
-xcrun swiftc -parse-as-library -module-cache-path ../../work/ModelModuleCache KeyboardExtension/KeyboardModel.swift Tests/KeyboardModelTests.swift -o ../../work/keyboard-model-tests
-../../work/keyboard-model-tests
-xcrun swiftc -parse-as-library -module-cache-path ../../work/ModelModuleCache KeyboardExtension/KeyboardModel.swift KeyboardExtension/KeyboardSuggestions.swift Tests/KeyboardSuggestionsTests.swift -o ../../work/keyboard-suggestion-tests
-../../work/keyboard-suggestion-tests
+xcodebuild -project SplitPad.xcodeproj -scheme SplitPad -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath .build/DerivedData CODE_SIGNING_ALLOWED=NO build
 ```
 
-Проверка каталога и истории (из папки проекта; первая команда загружает только исходные данные Unicode/CLDR для проверки):
+An unsigned build cannot be installed directly on an iPad. Use Xcode with your own signing team to install it.
+
+Run the model checks from the project directory:
 
 ```sh
-python3 Scripts/generate_emoji_catalog.py --source-dir ../../work/emoji-upgrade/sources --download --check
-xcrun swiftc -parse-as-library -module-cache-path ../../work/ModelModuleCache KeyboardExtension/EmojiCatalog.swift Tests/EmojiCatalogTests.swift -o ../../work/emoji-catalog-tests
-../../work/emoji-catalog-tests KeyboardExtension/EmojiCatalog.json ../../work/emoji-upgrade/sources/emoji-test.txt
+mkdir -p .build/ModelModuleCache
+xcrun swiftc -parse-as-library -module-cache-path .build/ModelModuleCache KeyboardExtension/KeyboardModel.swift Tests/KeyboardModelTests.swift -o .build/keyboard-model-tests
+.build/keyboard-model-tests
+xcrun swiftc -parse-as-library -module-cache-path .build/ModelModuleCache KeyboardExtension/KeyboardModel.swift KeyboardExtension/KeyboardSuggestions.swift Tests/KeyboardSuggestionsTests.swift -o .build/keyboard-suggestion-tests
+.build/keyboard-suggestion-tests
 ```
 
-## Проверка на устройстве
+Check the catalog and history from the project directory. The first command downloads only the Unicode/CLDR source data needed for verification:
 
-1. В пустом поле введите `Привет`, дважды быстро нажмите пробел и продолжите ввод. Ожидается `Привет. ` и заглавная следующая буква.
-2. Дважды нажмите Shift, введите несколько букв, снимите Caps Lock. Проверьте значок с чертой под стрелкой.
-3. Проверьте языки коротким нажатием 🌐; удержание 🌐 должно открыть следующую системную клавиатуру. Проверьте вставку табуляции кнопкой Tab.
-4. Смахните вниз по первой букве для цифры `1`. Удержите `е` / `e`, переместите палец по вариантам и отпустите. Аналогично проверьте валюты, кавычки и тире.
-5. Удерживайте Backspace в длинном тестовом тексте: сначала удаляются символы, затем слова. Уведите палец с клавиши: удаление должно прекратиться.
-6. Соедините и разделите клавиатуру, проверьте обе ориентации, светлую/тёмную темы и изменение размеров.
-7. Проверьте клики на iPad с включёнными системными звуками клавиатуры. Проверьте повторное открытие и сохранение настроек.
-8. Проверьте подсказки RU/EN и вставку эмодзи, возврат к буквам, смену поля и положение курсора внутри слова.
-9. В поиске эмодзи введите «кот» и `cat`, проверьте, что запрос и Backspace не меняют текст в приложении, а выбранный результат вставляется в него. Проверьте пустой результат, очистку, отмену и смену языка.
-10. Удерживайте жест или пару людей, выберите оттенок перемещением пальца. Уход пальца за меню отменяет выбор. Откройте «Недавние», затем переоткройте клавиатуру: выбранные эмодзи и оттенки должны сохраняться. Проверьте поиск и меню оттенков после поворота устройства.
+```sh
+python3 Scripts/generate_emoji_catalog.py --source-dir .build/emoji-sources --download --check
+xcrun swiftc -parse-as-library -module-cache-path .build/ModelModuleCache KeyboardExtension/EmojiCatalog.swift Tests/EmojiCatalogTests.swift -o .build/emoji-catalog-tests
+.build/emoji-catalog-tests KeyboardExtension/EmojiCatalog.json .build/emoji-sources/emoji-test.txt
+```
 
-11. Введите `Превет` или `teh`, выберите вариант «Исправить» / «Correct». Повторите после пробела и запятой: знаки должны сохраниться. Перенос курсора, смена поля или языка между нажатием и отпусканием подсказки должны отменять устаревшую замену.
+## Device testing
 
-12. На странице цифр введите число и пробел: должны вернуться буквы текущего языка. Проверьте обе половины пробела, RU/EN и поиск эмодзи. У нижних букв не должно быть ни маленьких знаков, ни меню удержания.
+1. In an empty field, type `Привет`, quickly press Space twice, and continue typing. Expect `Привет. ` followed by a capitalized letter.
+2. Double-tap Shift, type several letters, and disable Caps Lock. Check the line beneath the arrow in the Caps Lock icon.
+3. Tap 🌐 to switch languages; hold 🌐 to switch to the next system keyboard. Check that Tab inserts a tab character.
+4. Swipe down on the first letter key to enter `1`. Hold `е` / `e`, slide through the alternatives, and release. Repeat with currencies, quotation marks, and dashes.
+5. Hold Backspace in a long test passage: characters should be deleted first, then words. Move your finger off the key; deletion should stop.
+6. Join and split the keyboard. Check both orientations, light and dark themes, and size adjustments.
+7. Test key clicks on an iPad with system keyboard sounds enabled. Reopen the keyboard and check that settings persist.
+8. Test Russian and English suggestions, emoji insertion, returning to letters, switching fields, and placing the cursor inside a word.
+9. Search for `кот` and `cat`. Verify that the query and Backspace do not change the host app's text, while selecting a result inserts it into that text. Check empty results, clearing, cancellation, and language switching.
+10. Hold a hand gesture or couple emoji and select a skin tone by sliding your finger. Moving outside the menu should cancel selection. Open Recents, then reopen the keyboard: selected emoji and skin tones should persist. Check search and skin-tone menus after rotating the device.
+11. Type `Превет` or `teh`, then select an **Исправить** / **Correct** suggestion. Repeat after a space and comma; punctuation and spacing should be preserved. Moving the cursor or switching fields or languages between pressing and releasing a suggestion should cancel the stale replacement.
+12. On the numbers page, enter a number and a space; the current language's letters should return. Check both space bars, both languages, and emoji search. Lower-row letters should have neither small secondary labels nor hold menus.
 
-При проверке через Device Hub отключите **Device → Keyboard → Simulate Hardware Keyboard**, чтобы iPad не считал подключённой аппаратную клавиатуру. **Toggle Software Keyboard** позволяет вернуть экранную клавиатуру. Если сразу после установки новой сборки в уже открытом приложении остаётся пустая подложка, закройте и снова откройте это приложение.
+When testing through Device Hub, disable **Device → Keyboard → Simulate Hardware Keyboard** so that the iPad does not treat a hardware keyboard as connected. **Toggle Software Keyboard** can restore the onscreen keyboard. If an already-open app shows an empty keyboard background immediately after installing a new build, close and reopen that app.
 
-Документация Apple: https://developer.apple.com/documentation/uikit/creating-a-custom-keyboard
+Apple documentation: [Creating a custom keyboard](https://developer.apple.com/documentation/uikit/creating-a-custom-keyboard).
 
-## Статус проверки
+## Verification status
 
-Версия 0.6 (сборка 12) собрана и подписана Xcode 27.2, установлена на iPad Pro 12,9″ (M2) с iPadOS 27.2. Проходят 226 проверок подсказок, исправлений, ранжирования и безопасной замены. В тестовом поле ThumbSplit на устройстве подтверждены исправления «Превет» → «Привет» и `teh` → `the` по нажатию, сохранение регистра, запятой и пробела, отсутствие автоматической замены и возврат обычных подсказок после исправления. Системный словарь дополняется близкими частыми словами: «привет» предлагается раньше «пресет». Отдельная проверка новой функции в Telegram и других сторонних приложениях не проводилась.
+**Version 0.6.1 (build 13)** renames the app, keyboard, Xcode project, and shared scheme to SplitPad. Existing bundle identifiers and saved preferences remain compatible. The unsigned iOS build, all 101 emoji catalog/history checks, and the Unicode/CLDR catalog reproducibility check passed. The repository excludes local Xcode user settings and build outputs; signing requires selecting your own team.
 
-Версия 0.5.1 (сборка 11): по запросу пользователя полностью удалены отдельный экран диктовки, кнопка микрофона, URL-переход и запросы разрешений на микрофон и распознавание речи. Справа восстановлена `.?123`. Удаление дополнительных символов у нижних букв и возврат к буквам после пробела сохранены.
+**Version 0.6 (build 12)** was built and signed with Xcode 27.2 and installed on an iPad Pro 12.9-inch (M2) running iPadOS 27.2. All 226 checks for suggestions, corrections, ranking, and safe replacement passed. Device testing in SplitPad's test field confirmed tap-to-correct replacements of `Превет` → `Привет` and `teh` → `the`, preservation of case, commas, and spaces, no automatic replacement, and the return of normal suggestions after correction. Close common words supplement the system dictionary: `привет` is offered before `пресет`. The new spelling feature has not been separately tested in Telegram or other third-party apps.
 
-Версия 0.5.1 собрана и подписана Xcode 27.2, установлена на iPad Pro 12,9″ (M2) с iPadOS 27.2. Проходят 152 проверки модели ввода и раскладок. На устройстве подтверждены отсутствие карточки диктовки и микрофона, открытие цифр правой `.?123` и возврат к буквам после ввода `1` и правого пробела. В собранном приложении нет разрешений микрофона, распознавания речи и URL-схемы диктовки. Ранее прошли 70 проверок подсказок, 101 проверка каталога, поиска и истории эмодзи и проверка воспроизводимости каталога; эти компоненты в обновлении не менялись.
+**Version 0.5.1 (build 11)** removed the separate dictation screen, microphone button, URL handoff, and microphone and speech-recognition permission requests. The right-hand `.?123` key was restored. Lower-row letter alternatives remain removed, and pressing Space on the symbols page still returns to letters.
 
-В версии 0.4.3 меню дополнительных символов верхнего ряда помещается в область над клавишей: его высота адаптируется к доступному месту, переноса под палец больше нет. Сборка и установка прошли успешно; на iPad повторно проверен ввод `1` и `5` удержанием верхних клавиш.
+Version 0.5.1 was built and signed with Xcode 27.2 and installed on an iPad Pro 12.9-inch (M2) running iPadOS 27.2. All 152 input-model and layout checks passed. Device testing confirmed the removal of the dictation card and microphone, opening numbers with the right-hand `.?123` key, and returning to letters after entering `1` and pressing the right space bar. The built app contains no microphone or speech-recognition permissions and no dictation URL scheme. Earlier runs passed 70 suggestion checks, 101 emoji catalog, search, and history checks, and the catalog reproducibility check; those components were unchanged in that update.
 
-В версии 0.4.2 у русской «е» восстановлена цифра `5` в углу; удержание предлагает только `5` и `ё`. Все 148 проверок модели проходят.
+In **version 0.4.3**, top-row alternate-character menus fit above their keys: menu height adapts to the available space, so menus no longer appear beneath the finger. Build and installation succeeded; entering `1` and `5` by holding top-row keys was rechecked on the iPad.
 
-В версии 0.4.1 на физическом iPad проверены ввод удержанием цифр `1`, `3`, `9` и знаков `@`, `+`, ввод `Ё` / `ё` удержанием русской «е», обычное короткое нажатие и сохранение ввода цифры свайпом вниз. Все отображаемые дополнительные символы включены в варианты удержания.
+In **version 0.4.2**, the Russian `е` key regained its `5` corner label, and holding it offers only `5` and `ё`. All 148 model checks passed.
 
-В версии 0.4 на физическом iPad проверены поиск «кот» / `cat`, порядок результатов, вставка результата, изоляция запроса и Backspace от текста приложения, очистка и отмена поиска, смена языка, категории, недавние, выбор оттенка удержанием и последующим нажатием, повторный ввод выбранного оттенка и меню из 26 вариантов рукопожатия. История и оттенки сохранились после переустановки обновления. Исправлено отображение устаревших ячеек при переходе из категории в недавние.
+In **version 0.4.1**, physical-device testing covered entering `1`, `3`, `9`, `@`, and `+` by holding keys; entering `Ё` / `ё` by holding Russian `е`; ordinary short taps; and entering numbers with downward swipes. All displayed secondary characters are included in their hold menus.
 
-Панель проверена в портретной и альбомной ориентациях в тёмной теме. В тестовом поле самого ThumbSplit при повороте иногда скрывается клавиатура; повторное касание поля открывает её. Это существующее поведение тестового приложения; сохранение поискового запроса при таком скрытии не гарантируется. Выбор оттенка непрерывным движением пальца и светлая тема новой панели требуют отдельной ручной проверки.
+In **version 0.4**, physical-device testing covered `кот` / `cat` search, result ordering and insertion, isolation of search input and Backspace from the host app's text, clearing and canceling search, language switching, categories, recents, selecting a skin tone through a hold followed by a tap, reusing the selected tone, and the menu of 26 handshake variants. History and skin tones survived reinstalling the update. Stale cells shown when switching from a category to Recents were fixed.
 
-На физическом iPad проверены раскладка, соединение/разделение, темы, смена языка, Caps Lock, двойной пробел, ввод цифры свайпом вниз и акцента удержанием. Исправлен сбой подключения текстового поля, выявленный по отчёту устройства. Высота не оставляет прежнюю большую пустую область под клавишами.
+The emoji panel was tested in portrait and landscape orientations with the dark theme. Rotating the device sometimes dismisses the keyboard in SplitPad's own test field; tapping the field again reopens it. This is existing test-app behavior, and preserving an emoji search query across such a dismissal is not guaranteed. Skin-tone selection with one continuous finger movement and the new panel's light theme still need separate manual testing.
 
-В версии 0.3 дополнительно проверены вставка подсказки и эмодзи, возврат к буквам, настройки по удержанию, системная тёмная тема, скрытие/повторное открытие в ThumbSplit и Telegram и переход между этими приложениями. При проверке отключена имитация аппаратной клавиатуры Device Hub; после обновления расширения Telegram потребовал перезапуск.
+Physical-device testing also covered the layout, joining and splitting, themes, language switching, Caps Lock, double-space, entering numbers with downward swipes, and accented characters through hold menus. A text-field connection crash identified in a device report was fixed. Keyboard height no longer leaves the previous large empty area below the keys.
 
-В версии 0.3.1 на физическом iPad проверены вставка Tab, открытие эмодзи кнопкой рядом с глобусом, вставка эмодзи и возврат к буквам. Новые клавиши проверены в разделённой и цельной раскладках.
+In **version 0.3**, additional physical-device checks covered suggestion and emoji insertion, returning to letters, opening settings by holding the mode button, the system dark theme, hiding and reopening the keyboard in SplitPad and Telegram, and switching between those apps. Device Hub's hardware-keyboard simulation was disabled during testing; Telegram required a restart after the extension update.
 
-Полный чек-лист жестов с перемещением пальца, звука и поведения во всех сторонних приложениях требует дальнейшей проверки на устройстве.
+In **version 0.3.1**, physical-device checks covered Tab insertion, opening emoji with the button next to the globe, inserting emoji, and returning to letters. The new keys were tested in both split and joined layouts.
+
+The full checklist of sliding gestures, sound, and behavior across third-party apps still requires further device testing.

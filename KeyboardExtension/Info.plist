@@ -17,7 +17,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFBundleDisplayName</key>
-	<string>ThumbSplit</string>
+	<string>SplitPad</string>
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>NSExtension</key>

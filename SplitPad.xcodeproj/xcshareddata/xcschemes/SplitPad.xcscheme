@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00000000000000000000001C"
-               BuildableName = "ThumbSplit.app"
-               BlueprintName = "ThumbSplit"
-               ReferencedContainer = "container:ThumbSplit.xcodeproj">
+               BuildableName = "SplitPad.app"
+               BlueprintName = "SplitPad"
+               ReferencedContainer = "container:SplitPad.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00000000000000000000001C"
-            BuildableName = "ThumbSplit.app"
-            BlueprintName = "ThumbSplit"
-            ReferencedContainer = "container:ThumbSplit.xcodeproj">
+            BuildableName = "SplitPad.app"
+            BlueprintName = "SplitPad"
+            ReferencedContainer = "container:SplitPad.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "00000000000000000000001C"
-            BuildableName = "ThumbSplit.app"
-            BlueprintName = "ThumbSplit"
-            ReferencedContainer = "container:ThumbSplit.xcodeproj">
+            BuildableName = "SplitPad.app"
+            BlueprintName = "SplitPad"
+            ReferencedContainer = "container:SplitPad.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

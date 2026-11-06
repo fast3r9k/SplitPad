@@ -179,8 +179,8 @@ def provenance(payload):
     for name, (url, digest) in SOURCES.items():
         lines += [f"- {name}: {url}", f"  SHA-256: `{digest}`"]
     lines += ["", "Regenerate from the project directory:", "", "```sh",
-              "python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/thumbsplit-emoji-sources --download",
-              "python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/thumbsplit-emoji-sources --check",
+              "python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/splitpad-emoji-sources --download",
+              "python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/splitpad-emoji-sources --check",
               "```", "", "Unicode data and CLDR annotations are distributed under Unicode License V3.",
               "The unmodified upstream copyright and permission notice is bundled as LICENSE-UNICODE.txt.", ""]
     return "\n".join(lines).encode("utf-8")

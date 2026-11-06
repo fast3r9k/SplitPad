@@ -32,8 +32,8 @@ Pinned inputs:
 Regenerate from the project directory:
 
 ```sh
-python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/thumbsplit-emoji-sources --download
-python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/thumbsplit-emoji-sources --check
+python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/splitpad-emoji-sources --download
+python3 Scripts/generate_emoji_catalog.py --source-dir /tmp/splitpad-emoji-sources --check
 ```
 
 Unicode data and CLDR annotations are distributed under Unicode License V3.

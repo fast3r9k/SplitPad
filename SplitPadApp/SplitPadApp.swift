@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ThumbSplitApp: App {
+struct SplitPadApp: App {
     var body: some Scene {
         WindowGroup {
             SetupView()
@@ -30,7 +30,7 @@ private struct SetupView: View {
                 .frame(maxWidth: .infinity)
             }
             .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("ThumbSplit")
+            .navigationTitle("SplitPad")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if isTyping {
@@ -75,8 +75,8 @@ private struct SetupView: View {
             Text("Подключение за три шага")
                 .font(.title2.bold())
             step(1, "Откройте настройки iPad", "Основные → Клавиатура → Клавиатуры → Новые клавиатуры.")
-            step(2, "Добавьте ThumbSplit", "Выберите ThumbSplit в списке сторонних клавиатур. «Полный доступ» не нужен.")
-            step(3, "Переключитесь на неё", "Откройте поле ввода и удерживайте кнопку глобуса на клавиатуре. Выберите ThumbSplit.")
+            step(2, "Добавьте SplitPad", "Выберите SplitPad в списке сторонних клавиатур. «Полный доступ» не нужен.")
+            step(3, "Переключитесь на неё", "Откройте поле ввода и удерживайте кнопку глобуса на клавиатуре. Выберите SplitPad.")
         }
         .padding(24)
         .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 24))
@@ -92,7 +92,7 @@ private struct SetupView: View {
                     Button("Очистить") { sampleText = "" }
                 }
             }
-            Text("Коснитесь поля и выберите ThumbSplit через глобус.")
+            Text("Коснитесь поля и выберите SplitPad через глобус.")
                 .font(.callout)
                 .foregroundStyle(.secondary)
             TextEditor(text: $sampleText)

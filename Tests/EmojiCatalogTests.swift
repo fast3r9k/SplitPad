@@ -5,7 +5,7 @@
 private final class MemoryDefaults: UserDefaults {
     var values: [String: Any] = [:]
     init(values: [String: Any] = [:]) {
-        super.init(suiteName: "ThumbSplit.EmojiCatalogTests")!
+        super.init(suiteName: "SplitPad.EmojiCatalogTests")!
         self.values = values
     }
     override func dictionary(forKey defaultName: String) -> [String: Any]? {

@@ -1,0 +1,19 @@
+# macOS and per-user Xcode state
+.DS_Store
+**/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Local build products and downloaded verification inputs
+.build/
+build/
+DerivedData/
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.p12
+*.p8
+*.mobileprovision

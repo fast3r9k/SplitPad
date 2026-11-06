@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000000000000000000000008 /* ThumbSplitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* ThumbSplitApp.swift */; };
+		000000000000000000000008 /* SplitPadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* SplitPadApp.swift */; };
 		000000000000000000000009 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* KeyboardViewController.swift */; };
 		00000000000000000000000A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000005 /* PrivacyInfo.xcprivacy */; };
-		00000000000000000000000B /* ThumbSplitKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* ThumbSplitKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		00000000000000000000000B /* SplitPadKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* SplitPadKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A10000000000000000000012 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000011 /* KeyboardModel.swift */; };
 		A10000000000000000000022 /* KeycapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000021 /* KeycapView.swift */; };
 		A10000000000000000000032 /* KeyboardSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000031 /* KeyboardSuggestions.swift */; };
@@ -26,7 +26,7 @@
 			containerPortal = 000000000000000000000017 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 000000000000000000000018;
-			remoteInfo = ThumbSplitKeyboard;
+			remoteInfo = SplitPadKeyboard;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -37,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				00000000000000000000000B /* ThumbSplitKeyboard.appex in Embed Foundation Extensions */,
+				00000000000000000000000B /* SplitPadKeyboard.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,13 +45,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		000000000000000000000001 /* ThumbSplitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbSplitApp.swift; sourceTree = "<group>"; };
+		000000000000000000000001 /* SplitPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitPadApp.swift; sourceTree = "<group>"; };
 		000000000000000000000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		000000000000000000000003 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		000000000000000000000004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		000000000000000000000005 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		000000000000000000000006 /* ThumbSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		000000000000000000000007 /* ThumbSplitKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ThumbSplitKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000006 /* SplitPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000007 /* SplitPadKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SplitPadKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000011 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		A10000000000000000000021 /* KeycapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeycapView.swift; sourceTree = "<group>"; };
 		A10000000000000000000031 /* KeyboardSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSuggestions.swift; sourceTree = "<group>"; };
@@ -79,13 +79,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00000000000000000000000C /* ThumbSplitApp */ = {
+		00000000000000000000000C /* SplitPadApp */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000001 /* ThumbSplitApp.swift */,
+				000000000000000000000001 /* SplitPadApp.swift */,
 				000000000000000000000002 /* Info.plist */,
 			);
-			path = ThumbSplitApp;
+			path = SplitPadApp;
 			sourceTree = "<group>";
 		};
 		00000000000000000000000D /* KeyboardExtension */ = {
@@ -108,8 +108,8 @@
 		00000000000000000000000E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000006 /* ThumbSplit.app */,
-				000000000000000000000007 /* ThumbSplitKeyboard.appex */,
+				000000000000000000000006 /* SplitPad.app */,
+				000000000000000000000007 /* SplitPadKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 		00000000000000000000000F /* MainGroup */ = {
 			isa = PBXGroup;
 			children = (
-				00000000000000000000000C /* ThumbSplitApp */,
+				00000000000000000000000C /* SplitPadApp */,
 				00000000000000000000000D /* KeyboardExtension */,
 				00000000000000000000000E /* Products */,
 			);
@@ -127,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		000000000000000000000018 /* ThumbSplitKeyboard */ = {
+		000000000000000000000018 /* SplitPadKeyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00000000000000000000001D /* Build configuration list for PBXNativeTarget "ThumbSplitKeyboard" */;
+			buildConfigurationList = 00000000000000000000001D /* Build configuration list for PBXNativeTarget "SplitPadKeyboard" */;
 			buildPhases = (
 				000000000000000000000011 /* Sources */,
 				000000000000000000000013 /* Frameworks */,
@@ -139,14 +139,14 @@
 			);
 			dependencies = (
 			);
-			name = ThumbSplitKeyboard;
-			productName = ThumbSplitKeyboard;
-			productReference = 000000000000000000000007 /* ThumbSplitKeyboard.appex */;
+			name = SplitPadKeyboard;
+			productName = SplitPadKeyboard;
+			productReference = 000000000000000000000007 /* SplitPadKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		00000000000000000000001C /* ThumbSplit */ = {
+		00000000000000000000001C /* SplitPad */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00000000000000000000001B /* Build configuration list for PBXNativeTarget "ThumbSplit" */;
+			buildConfigurationList = 00000000000000000000001B /* Build configuration list for PBXNativeTarget "SplitPad" */;
 			buildPhases = (
 				000000000000000000000010 /* Sources */,
 				000000000000000000000012 /* Frameworks */,
@@ -158,9 +158,9 @@
 			dependencies = (
 				00000000000000000000001A /* PBXTargetDependency */,
 			);
-			name = ThumbSplit;
-			productName = ThumbSplit;
-			productReference = 000000000000000000000006 /* ThumbSplit.app */;
+			name = SplitPad;
+			productName = SplitPad;
+			productReference = 000000000000000000000006 /* SplitPad.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,7 +181,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 000000000000000000000020 /* Build configuration list for PBXProject "ThumbSplit" */;
+			buildConfigurationList = 000000000000000000000020 /* Build configuration list for PBXProject "SplitPad" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ru;
 			hasScannedForEncodings = 0;
@@ -195,8 +195,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				00000000000000000000001C /* ThumbSplit */,
-				000000000000000000000018 /* ThumbSplitKeyboard */,
+				00000000000000000000001C /* SplitPad */,
+				000000000000000000000018 /* SplitPadKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000000000000000000000008 /* ThumbSplitApp.swift in Sources */,
+				000000000000000000000008 /* SplitPadApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +248,7 @@
 /* Begin PBXTargetDependency section */
 		00000000000000000000001A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 000000000000000000000018 /* ThumbSplitKeyboard */;
+			target = 000000000000000000000018 /* SplitPadKeyboard */;
 			targetProxy = 000000000000000000000019 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -350,15 +350,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ThumbSplitApp/Info.plist;
+				INFOPLIST_FILE = SplitPadApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -371,15 +371,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ThumbSplitApp/Info.plist;
+				INFOPLIST_FILE = SplitPadApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -393,8 +393,8 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -402,7 +402,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.6;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -417,8 +417,8 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -426,7 +426,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.6;
+				MARKETING_VERSION = 0.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit.Keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -439,7 +439,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00000000000000000000001B /* Build configuration list for PBXNativeTarget "ThumbSplit" */ = {
+		00000000000000000000001B /* Build configuration list for PBXNativeTarget "SplitPad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				000000000000000000000021 /* Debug */,
@@ -448,7 +448,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00000000000000000000001D /* Build configuration list for PBXNativeTarget "ThumbSplitKeyboard" */ = {
+		00000000000000000000001D /* Build configuration list for PBXNativeTarget "SplitPadKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				000000000000000000000023 /* Debug */,
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		000000000000000000000020 /* Build configuration list for PBXProject "ThumbSplit" */ = {
+		000000000000000000000020 /* Build configuration list for PBXProject "SplitPad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00000000000000000000001E /* Debug */,
