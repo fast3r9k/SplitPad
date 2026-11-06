@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000000000000000000008 /* ThumbSplitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* ThumbSplitApp.swift */; };
+		000000000000000000000009 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* KeyboardViewController.swift */; };
+		00000000000000000000000A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000005 /* PrivacyInfo.xcprivacy */; };
+		00000000000000000000000B /* ThumbSplitKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* ThumbSplitKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A10000000000000000000012 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000011 /* KeyboardModel.swift */; };
+		A10000000000000000000022 /* KeycapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000021 /* KeycapView.swift */; };
+		A10000000000000000000032 /* KeyboardSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000031 /* KeyboardSuggestions.swift */; };
+		A10000000000000000000042 /* EmojiPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000041 /* EmojiPanelView.swift */; };
+		A10000000000000000000052 /* EmojiCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000051 /* EmojiCatalog.swift */; };
+		A10000000000000000000062 /* EmojiCatalog.json in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000061 /* EmojiCatalog.json */; };
+		A10000000000000000000072 /* LICENSE-UNICODE.txt in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000071 /* LICENSE-UNICODE.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		000000000000000000000019 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000000000000000000017 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000000000000000000018;
+			remoteInfo = ThumbSplitKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		000000000000000000000016 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				00000000000000000000000B /* ThumbSplitKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000001 /* ThumbSplitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbSplitApp.swift; sourceTree = "<group>"; };
+		000000000000000000000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000000000000000000000003 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		000000000000000000000004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000000000000000000000005 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		000000000000000000000006 /* ThumbSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000007 /* ThumbSplitKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ThumbSplitKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000011 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		A10000000000000000000021 /* KeycapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeycapView.swift; sourceTree = "<group>"; };
+		A10000000000000000000031 /* KeyboardSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSuggestions.swift; sourceTree = "<group>"; };
+		A10000000000000000000041 /* EmojiPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPanelView.swift; sourceTree = "<group>"; };
+		A10000000000000000000051 /* EmojiCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCatalog.swift; sourceTree = "<group>"; };
+		A10000000000000000000061 /* EmojiCatalog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmojiCatalog.json; sourceTree = "<group>"; };
+		A10000000000000000000071 /* LICENSE-UNICODE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE-UNICODE.txt"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000000000012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000000000000000000013 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00000000000000000000000C /* ThumbSplitApp */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000001 /* ThumbSplitApp.swift */,
+				000000000000000000000002 /* Info.plist */,
+			);
+			path = ThumbSplitApp;
+			sourceTree = "<group>";
+		};
+		00000000000000000000000D /* KeyboardExtension */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000003 /* KeyboardViewController.swift */,
+				A10000000000000000000021 /* KeycapView.swift */,
+				A10000000000000000000041 /* EmojiPanelView.swift */,
+				A10000000000000000000061 /* EmojiCatalog.json */,
+				A10000000000000000000071 /* LICENSE-UNICODE.txt */,
+				A10000000000000000000051 /* EmojiCatalog.swift */,
+				A10000000000000000000031 /* KeyboardSuggestions.swift */,
+				A10000000000000000000011 /* KeyboardModel.swift */,
+				000000000000000000000004 /* Info.plist */,
+				000000000000000000000005 /* PrivacyInfo.xcprivacy */,
+			);
+			path = KeyboardExtension;
+			sourceTree = "<group>";
+		};
+		00000000000000000000000E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000006 /* ThumbSplit.app */,
+				000000000000000000000007 /* ThumbSplitKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00000000000000000000000F /* MainGroup */ = {
+			isa = PBXGroup;
+			children = (
+				00000000000000000000000C /* ThumbSplitApp */,
+				00000000000000000000000D /* KeyboardExtension */,
+				00000000000000000000000E /* Products */,
+			);
+			name = MainGroup;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000018 /* ThumbSplitKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00000000000000000000001D /* Build configuration list for PBXNativeTarget "ThumbSplitKeyboard" */;
+			buildPhases = (
+				000000000000000000000011 /* Sources */,
+				000000000000000000000013 /* Frameworks */,
+				000000000000000000000015 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThumbSplitKeyboard;
+			productName = ThumbSplitKeyboard;
+			productReference = 000000000000000000000007 /* ThumbSplitKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		00000000000000000000001C /* ThumbSplit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00000000000000000000001B /* Build configuration list for PBXNativeTarget "ThumbSplit" */;
+			buildPhases = (
+				000000000000000000000010 /* Sources */,
+				000000000000000000000012 /* Frameworks */,
+				000000000000000000000014 /* Resources */,
+				000000000000000000000016 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00000000000000000000001A /* PBXTargetDependency */,
+			);
+			name = ThumbSplit;
+			productName = ThumbSplit;
+			productReference = 000000000000000000000006 /* ThumbSplit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000017 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 2720;
+				TargetAttributes = {
+					000000000000000000000018 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					00000000000000000000001C = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 000000000000000000000020 /* Build configuration list for PBXProject "ThumbSplit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ru;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ru,
+				en,
+				Base,
+			);
+			mainGroup = 00000000000000000000000F /* MainGroup */;
+			productRefGroup = 00000000000000000000000E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00000000000000000000001C /* ThumbSplit */,
+				000000000000000000000018 /* ThumbSplitKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000000000000000000014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000000000000000000015 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00000000000000000000000A /* PrivacyInfo.xcprivacy in Resources */,
+				A10000000000000000000062 /* EmojiCatalog.json in Resources */,
+				A10000000000000000000072 /* LICENSE-UNICODE.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000000000010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000000008 /* ThumbSplitApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000000000000000000011 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000000009 /* KeyboardViewController.swift in Sources */,
+				A10000000000000000000022 /* KeycapView.swift in Sources */,
+				A10000000000000000000042 /* EmojiPanelView.swift in Sources */,
+				A10000000000000000000052 /* EmojiCatalog.swift in Sources */,
+				A10000000000000000000032 /* KeyboardSuggestions.swift in Sources */,
+				A10000000000000000000012 /* KeyboardModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00000000000000000000001A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000000000018 /* ThumbSplitKeyboard */;
+			targetProxy = 000000000000000000000019 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00000000000000000000001E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		00000000000000000000001F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		000000000000000000000021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ThumbSplitApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Debug;
+		};
+		000000000000000000000022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ThumbSplitApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Release;
+		};
+		000000000000000000000023 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KeyboardExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Debug;
+		};
+		000000000000000000000024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = S2Z76F5HF8;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KeyboardExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nikitagreckin.ThumbSplit.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00000000000000000000001B /* Build configuration list for PBXNativeTarget "ThumbSplit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000000021 /* Debug */,
+				000000000000000000000022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00000000000000000000001D /* Build configuration list for PBXNativeTarget "ThumbSplitKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000000023 /* Debug */,
+				000000000000000000000024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000000020 /* Build configuration list for PBXProject "ThumbSplit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00000000000000000000001E /* Debug */,
+				00000000000000000000001F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000017 /* Project object */;
+}
